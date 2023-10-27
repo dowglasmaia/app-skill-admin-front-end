@@ -2,23 +2,16 @@
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">JOB SKILLS</a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <ul class="navbar-nav">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link " routerLink="/skills"> Skills </a>
+      </li>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link " routerLink="/skills/new">new</a>
+      </li>
+    </ul>
 
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link " routerLink="/skills">Skills</a>
-        </li>
-
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link " routerLink="/skills/new">new</a>
-        </li>
-      </ul>
-    </div>
   </div>
 </nav>
 
