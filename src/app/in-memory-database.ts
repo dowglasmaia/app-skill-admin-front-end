@@ -1,11 +1,12 @@
 import { InMemoryDbService } from "angular-in-memory-web-api";
+import { Skill } from "./pages/skills/model/skill.model";
 
 export class InMemoryDataBase implements InMemoryDbService {
 
     createDb() {
-        const skills = [
+        const skills: Skill[] = [
             { id: 1, name: "Java 17" },
-            { id: 2, name: "Spring Boot" },
+            { id: 2, name: "Spring Boot 3" },
             { id: 3, name: "Angular 15" },
             { id: 4, name: "Scrum" },
             { id: 5, name: "Typescript" },
@@ -18,5 +19,4 @@ export class InMemoryDataBase implements InMemoryDbService {
 
         return { skills }
     }
-
 }
