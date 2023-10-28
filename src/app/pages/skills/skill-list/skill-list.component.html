@@ -32,48 +32,14 @@
   </thead>
 
   <tbody>
-    <tr>
+    <tr *ngFor="let skill of skills">
       <td>
-        <strong>Java 17</strong><br>
+        <strong>{{skill.name}}</strong><br>
       </td>
+
       <td class="float-right">
-        <a [routerLink]="[ 12, 'edit' ]" class="btn btn-sm btn-outline-info mr-2">
-          Editar
-        </a>
-
-        <a (click)="alert('exluir')" class="btn btn-sm btn-outline-danger ">
-          Excluir
-        </a>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <strong>Spring Boot</strong><br>
-      </td>
-      <td class="float-right">
-        <a [routerLink]="[ 12, 'edit' ]" class="btn btn-sm btn-outline-info mr-2">
-          Editar
-        </a>
-
-        <a (click)="alert('exluir')" class="btn btn-sm btn-outline-danger ">
-          Excluir
-        </a>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <strong>Angular 14</strong><br>
-      </td>
-      <td class="float-right">
-        <a [routerLink]="[ 12, 'edit' ]" class="btn btn-sm btn-outline-info mr-2">
-          Editar
-        </a>
-
-        <a (click)="alert('exluir')" class="btn btn-sm btn-outline-danger ">
-          Excluir
-        </a>
+        <a [routerLink]="[ skill.id, 'edit' ]" class="btn btn-sm btn-outline-info mr-2"> Editar </a>
+        <button (click)="delete()" class="btn btn-sm btn-outline-danger " disabled> Excluir </button>
       </td>
     </tr>
   </tbody>
