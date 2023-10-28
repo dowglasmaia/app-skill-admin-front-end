@@ -1,6 +1,4 @@
-export class Skill {
-    constructor(
-        id?: number,
-        name?: string
-    ) { }
+export interface Skill {
+    id?: number;
+    name?: string
 }

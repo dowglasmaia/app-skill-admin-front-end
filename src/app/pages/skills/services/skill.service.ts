@@ -33,6 +33,32 @@ export class SkillService {
       )
   }
 
+  create(skill: Skill): Observable<Skill> {
+    return this.http.post(this.apiPath, skill)
+      .pipe(
+        catchError(this.handleError),
+        map(this.jsonDataToSkill)
+      )
+  }
+
+  update(skill: Skill): Observable<Skill> {
+    const url = `${this.apiPath}/${skill.id}`;
+    return this.http.put(url, skill)
+      .pipe(
+        catchError(this.handleError),
+        map(() => skill)
+      )
+  }
+
+  delete(id: number): Observable<any> {
+    const url = `${this.apiPath}/${id}`;
+    return this.http.delete(url)
+      .pipe(
+        catchError(this.handleError),
+        map(() => null)
+      )
+  }
+
 
   private jsonDataToSkill(jsonData: any): Skill {
     return jsonData as Skill;
