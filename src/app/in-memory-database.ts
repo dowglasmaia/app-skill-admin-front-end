@@ -1,5 +1,5 @@
 import { InMemoryDbService } from "angular-in-memory-web-api";
-import { Skill } from "./pages/skills/model/Skill";
+import { Skill } from "./pages/skills/model/skill.model";
 
 export class InMemoryDataBase implements InMemoryDbService {
 

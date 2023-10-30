@@ -95,19 +95,22 @@ export class SkillFormComponent implements OnInit {
   }
 
   private loadSkill() {
-    if (this.currentcAction == "edit") {
+    console.log(this.currentcAction)
+    if (this.currentcAction === "edit") {
       this.route.paramMap.pipe(
         switchMap(params => this.skillService.getById(+params.get("id")))
-
       ).subscribe(
         (skill) => {
           this.skill = skill;
-          this.skillForm.patchValue(switchMap)
+          this.skillForm.patchValue(skill)
         },
         (error) => alert('Ocorreu um error no servidor, tente mais tarde!')
       )
     }
   }
+
+
+
   private setPageTitle() {
     if (this.currentcAction == 'new')
       this.pageTile = 'Cadrastro de  Nova Skill'

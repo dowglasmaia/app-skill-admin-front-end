@@ -4,7 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, throwError } from "rxjs";
 import { map, catchError, flatMap } from "rxjs/operators"
-import { Skill } from "../model/Skill";
+import { Skill } from '../model/skill.model';
+
 
 
 @Injectable({
@@ -61,7 +62,8 @@ export class SkillService {
 
 
   private jsonDataToSkill(jsonData: any): Skill {
-    return jsonData as Skill;
+    let json = jsonData as Skill;
+    return json;
   }
 
   private jsonDataToSkills(jsonData: any[]): Skill[] {
