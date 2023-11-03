@@ -3,7 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
 
-{path:'skills',loadChildren:'./pages/skills/skills.module#SkillsModule'}
+  { path: '', loadChildren: './pages/dashboard/dashboard.module#DashboardModule' },
+
+  { path: 'skills', loadChildren: './pages/skills/skills.module#SkillsModule' },
 
 ];
 

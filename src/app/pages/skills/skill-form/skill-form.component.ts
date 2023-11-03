@@ -118,7 +118,6 @@ export class SkillFormComponent implements OnInit {
       const skillName = this.skill.name || ''
       this.pageTile = 'Editando Skill: ' + skillName;
     }
-
   }
 
 
