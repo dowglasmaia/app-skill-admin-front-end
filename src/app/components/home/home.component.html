@@ -3,104 +3,50 @@
     <!-- Logo -->
     <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>M</b>aia</span>
+      <span class="logo-mini"><b>Skills</b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg">
-        <b>Maia</b>TI
+        <b>Job Skills</b>
       </span>
     </a>
 
     <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation">     
+    <nav class="navbar navbar-static-top justify-content-start" role="navigation">
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
-
-      <!-- Navbar Right Menu -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Usuario Logado -->
-          <li class="dropdown user user-menu">
-            <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- Imagem da navbar-->
-              <img src="./../../../assets/img/user.png" class="img-circle" alt="User Image"
-                style="width: 20px !important; height: 18px !important;">
-              <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Dowglas Maia</span>
-            </a>
-
-            <ul class="dropdown-menu">
-              <!-- Imagem do menu -->
-              <li class="user-header">
-                <img src="./../../../assets/img/user.png" class="img-circle" alt="User Image">
-
-                <p>
-                  Dowglas Maia - Web Developer
-                  <small>Membro desde | 2019</small>
-                </p>
-              </li>
-
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sair</a>
-                </div>
-              </li>
-
-            </ul>
-          </li> 
-          <!-- / Fim usuario-->          
-        </ul>
-      </div>
     </nav>
   </header>
 
   <!-- Coluna Esquerda do sidebar -  com Menu de Navegação -->
   <aside class="main-sidebar">
+    <!-- Sidebar Menu -->
     <section class="sidebar">
-      <!-- Formulario de Busca (Optional) 
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Buscar...">
-          <span class="input-group-btn">
-            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-            </button>
-          </span>
-        </div>
-      </form>
-
-     -->
-
-      <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header" style="text-align: center !important; padding: 15px 0 !important">MENU</li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link " routerLink="/skills"> Skills </a>
         </li>
-  
+
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link " routerLink="/skills/new">new</a>
         </li>
-      </ul>    
-    </section>  
+      </ul>
+    </section>
   </aside>
- 
+
   <!-- Main content -->
   <div class="content-wrapper">
     <section class="content container-fluid">
 
       <router-outlet></router-outlet>
 
-    </section>   
+    </section>
   </div>
 
   <!-- Main Footer -->
-  <footer class="main-footer">  
-    <div class="pull-right hidden-xs">  Desenvolvimento: <strong>Dowglas Maia</strong> </div>
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs"> Desenvolvimento: <strong>Dowglas Maia</strong> </div>
     <strong>&copy; 2023 <a href="#">Site</a> | </strong> Todos os direitos reservados.
   </footer>
 
