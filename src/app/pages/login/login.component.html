@@ -1,0 +1,58 @@
+<!-- Page content -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card shadow border-0">
+                <div class="card-header">
+                    <h3 class="text-center mt-5">Bem Vindo</h3>
+
+                </div>
+
+                <h6 class="text-center mt-2">Entre com suas Credencias para logar</h6>
+
+                <div class="card-body px-lg-5 py-lg-5">
+                    <form [formGroup]="loginGroup" (submit)="login()">
+                        <div class="form-group mb-3">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <input class="form-control" placeholder="User" type="text" formControlName="user">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-key" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <input class="form-control" formControlName="password" placeholder="Senha"
+                                    type="password">
+                            </div>
+                        </div>
+
+                        <div class="text-center pt-4 pb-3">
+                            <button class="btn btn-block btn-lg btn-primary text-center text-light" type="submit">
+                                Login
+                                <i class="fa fa-paper-plane ml-2" aria-hidden="true"></i>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="text-center">
+                Entre com as credencias para logar:<br>
+                <strong>User:</strong> user <br>
+                <strong>Senha :</strong> 123
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div *ngIf="userLogado" class="wrapper">
   <header class="main-header">
     <!-- Logo -->
     <a routerLink="/" class="logo">
@@ -48,5 +48,16 @@
     <div class="pull-right hidden-xs"> Desenvolvimento: <strong>Dowglas Maia</strong> </div>
     <strong>&copy; 2023 <a href="#">Site</a> | </strong> Todos os direitos reservados.
   </footer>
+
+</div>
+
+
+<div *ngIf="!userLogado">
+
+  <section class="content container-fluid">
+
+    <router-outlet></router-outlet>
+
+  </section>
 
 </div>

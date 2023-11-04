@@ -9,6 +9,8 @@ const routes: Routes = [
 
   { path: 'profile', loadChildren: './pages/user/user.module#UserModule' },
 
+  { path: 'login', loadChildren: './pages/login/login.module#LoginModule' },
+
 ];
 
 @NgModule({

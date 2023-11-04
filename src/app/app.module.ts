@@ -9,6 +9,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { InMemoryDataBase } from './in-memory-database'
 import { HomeComponent } from './components/home/home.component';
 
+import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,10 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataBase)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+
 })
 export class AppModule { }
