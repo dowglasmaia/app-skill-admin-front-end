@@ -80,9 +80,5 @@ export class LoginComponent implements OnInit {
 
   }
 
-  public logout() {
-    this.storage.setLocalUser(null);
-    sessionStorage.clear();
-  }
 
 }

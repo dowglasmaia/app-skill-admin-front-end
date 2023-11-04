@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   userLogado: boolean = false;
 
   constructor(
-    private storageService: StorageService,
+    private storage: StorageService,
     private router: Router,
   ) { }
 
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
  
   public getUserLogado() {
-    let localUser = this.storageService.getLocalUser();
+    let localUser = this.storage.getLocalUser();
     console.log(localUser)
 
     if (localUser !== null) {     
@@ -34,6 +34,12 @@ export class HomeComponent implements OnInit {
       this.router.navigateByUrl('login', { skipLocationChange: true })
     }
 
+  }
+
+  public logout() {
+    this.storage.setLocalUser(null);
+    sessionStorage.clear();
+    location.reload()
   }
 
 }
