@@ -20,7 +20,7 @@ import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataBase)
+    //HttpClientInMemoryWebApiModule.forRoot(InMemoryDataBase)
   ],
   providers: [],
   bootstrap: [AppComponent],

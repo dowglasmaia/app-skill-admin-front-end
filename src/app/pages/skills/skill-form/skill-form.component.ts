@@ -62,7 +62,13 @@ export class SkillFormComponent implements OnInit {
   }
 
   private updateSkill() {
+    const skill: Skill = Object.assign(new Skill(), this.skillForm.value)
 
+    this.skillService.update(skill)
+      .subscribe(
+        skill => this.actionsForSuccess(skill),
+        error => this.actionsForError(error)
+      )
   }
 
   private actionsForSuccess(skill: Skill) {

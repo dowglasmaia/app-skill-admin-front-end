@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";
 import { map, catchError, flatMap } from "rxjs/operators"
 import { Skill } from '../model/skill.model';
+import { environment } from 'src/environments/environment.prod';
 
 
 
@@ -13,7 +14,7 @@ import { Skill } from '../model/skill.model';
 })
 export class SkillService {
 
-  private apiPath: string = "api/skills";
+  private apiPath: string = `${environment.url_api}/skills`;
 
   constructor(private http: HttpClient) { }
 
