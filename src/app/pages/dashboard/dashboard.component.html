@@ -1,8 +1,8 @@
 <nav class="navbar bg-body-tertiary justify-content-end" style="background-color: rgb(188, 205, 210);">
   <form class="d-flex " role="search">
-    <input class="form-control me-2" type="search" placeholder="Listar por Skill" aria-label="Search">
+    <input class="form-control me-2" type="search" placeholder="Listar por Skill" aria-label="Search" #filterPorNameSkill  >
 
-    <button class="btn btn-outline-success" type="button">Localizar</button>
+    <button (click)="listar(filterPorNameSkill.value)" class="btn btn-outline-success" type="button">Localizar</button>
   </form>
 </nav>
 
@@ -30,13 +30,13 @@
         </div>
 
         <div class="col-md-7 justify-content">
-          <div class="card-body">          
+          <div class="card-body">
             <li class="card-header text-center">Skills</li>
-              <ul class="list-group" *ngFor="let skill of colaborador.skills">               
-                <li class="list-group-item" >
-                  {{skill.name}}
-                </li>
-              </ul> 
+            <ul class="list-group" *ngFor="let skill of colaborador.skills">
+              <li class="list-group-item">
+                {{skill.name}}
+              </li>
+            </ul>
           </div>
         </div>
 

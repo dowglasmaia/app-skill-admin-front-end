@@ -18,10 +18,21 @@ export class ColaboradorService {
 
   private apiPath: string = `${environment.url_api}/colaboradores`;
 
+
+  getAllByNameSkill(name: string): Observable<Colaborador[]> {
+    console.log("O NOME É: "+name);
+    return this.http.get(`${this.apiPath}?skill=${name}`)
+    .pipe(
+      catchError(this.handleError),
+      map(this.jsonDataToColaboradores)
+    )
+  }
+
+
   constructor(private http: HttpClient) { }
 
-  getAllBySkill(idSkill: number): Observable<Colaborador[]> {
-    return this.http.get(`${this.apiPath}/skill/${idSkill}`)
+  getAll(): Observable<Colaborador[]> {
+    return this.http.get(`${this.apiPath}?skill=`)
       .pipe(
         catchError(this.handleError),
         map(this.jsonDataToColaboradores)
