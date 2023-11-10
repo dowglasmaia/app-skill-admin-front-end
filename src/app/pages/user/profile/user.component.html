@@ -65,14 +65,14 @@
               </li>
             </ul>
 
-            <div class="input-group">
+            <div class="input-group" *ngIf="userLogado">
               <select [(ngModel)]="selectedSkill" class="custom-select" id="selectedSkill"
                 aria-label="Example select with button addon">
                 <option [value]="null" disabled selected>Escolha uma opção</option>
                 <option *ngFor="let skill of skills" [ngValue]="skill">{{ skill.name }}</option>
               </select>
 
-              <div class="input-group-append">
+              <div class="input-group-append" >
                 <button class="btn btn-outline-secondary" type="button" (click)="addSkill(selectedSkill)">
                   Adicionar Nova Skill
                 </button>
@@ -81,7 +81,7 @@
           </div>
         </div>
 
-        <button class="btn btn-outline-primary" type="button" (click)="update()">
+        <button class="btn btn-outline-primary" type="button" (click)="update()" *ngIf="userLogado">
           Atulizar
         </button>
       </div>

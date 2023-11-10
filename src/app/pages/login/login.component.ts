@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Login } from './model/login.model';
 
 
@@ -21,7 +21,7 @@ toasrt.options = {
   "extendedTimeOut": "1000",
   "showEasing": "swing",
   "hideEasing": "linear",
-  "showMethod": "fadeIn", 
+  "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
 }
 
@@ -53,7 +53,9 @@ export class LoginComponent implements OnInit {
 
   public getUserLogado() {
     let localUser = this.storage.getLocalUser();
-    if (localUser !== null) {
+    let localManager = this.storage.getManager();
+
+    if (localUser !== null || localManager !== null) {
       this.router.navigateByUrl('/', { skipLocationChange: true })
     }
   }
@@ -74,10 +76,15 @@ export class LoginComponent implements OnInit {
       setTimeout(() => {
         this.router.navigateByUrl('/', { skipLocationChange: true })
       }, 1000);
+    } else if (login.password === "123" && login.user === "manager") {
+      this.storage.setManager(login);
+      location.reload()
+      setTimeout(() => {
+        this.router.navigateByUrl('/', { skipLocationChange: true })
+      }, 1000);
     } else {
       toasrt.error('User ou Senha inválido(a)!');
     }
-
   }
 
 

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Skill } from '../../skills/model/skill.model';
 import { SkillService } from '../../skills/services/skill.service';
+import { StorageService } from '../../login/services/storage.service';
 
 @Component({
   selector: 'app-user',
@@ -16,7 +17,12 @@ export class UserComponent implements OnInit {
     private colaboradorService: ColaboradorService,
     private skillsService: SkillService,
     private route: ActivatedRoute,
+    private storage: StorageService,
+    private router: Router
   ) { }
+
+  userLogado: boolean = false;
+  managerLogado: boolean = false;
 
   colaborador: Colaborador = new Colaborador();
   colaboradorSkills: Skill[] = [];
@@ -27,6 +33,8 @@ export class UserComponent implements OnInit {
     this.getById();
 
     this.getAllSkill();
+
+    this.getUserLogado();
 
   }
 
@@ -60,6 +68,19 @@ export class UserComponent implements OnInit {
       .subscribe(colaborador => {
         this.colaborador = colaborador
       })
+  }
+
+
+  public getUserLogado() {
+    let localUser = this.storage.getLocalUser();
+    let localManager = this.storage.getManager();
+
+    if (localUser !== null && localManager === null) {
+      this.userLogado = true
+
+    } else if (localUser === null && localManager !== null) {
+      this.managerLogado = true
+    }
 
   }
 

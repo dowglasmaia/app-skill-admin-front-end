@@ -3,6 +3,8 @@ import { ColaboradorService } from '../user/services/colaborador.service';
 import { Colaborador } from '../user/model/colaborador.model';
 
 import toasrt from "toastr";
+import { StorageService } from '../login/services/storage.service';
+import { Router } from '@angular/router';
 toasrt.options = {
   "closeButton": false,
   "debug": false,
@@ -28,12 +30,21 @@ toasrt.options = {
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private colaboradorService: ColaboradorService) { }
+  userLogado: boolean = false;
+  managerLogado: boolean = false;
+
+  constructor(
+    private colaboradorService: ColaboradorService,
+    private storage: StorageService,
+    private router: Router
+  ) { }
 
   colaboradores: Colaborador[] = [];
 
   ngOnInit() {
     this.findAll();
+
+    this.getUserLogado();
   }
 
   private findAll() {
@@ -53,6 +64,19 @@ export class DashboardComponent implements OnInit {
         response => this.colaboradores = response.sort((a, b) => b.id - a.id),
         error => alert('Error ao carregar a lista de Skills')
       )
+  }
+
+  public getUserLogado() {
+    let localUser = this.storage.getLocalUser();
+    let localManager = this.storage.getManager();
+
+    if (localUser !== null && localManager === null) {
+      this.userLogado = true
+      this.router.navigate(['profile', 1], { skipLocationChange: true })
+    } else if (localUser === null && localManager !== null) {
+      this.managerLogado = true
+    }
+
   }
 
 

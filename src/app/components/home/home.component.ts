@@ -19,25 +19,26 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.getUserLogado();
-   
+
   }
 
- 
+
   public getUserLogado() {
     let localUser = this.storage.getLocalUser();
+    let localManager = this.storage.getManager();
     console.log(localUser)
+    console.log(localManager)
 
-    if (localUser !== null ) {     
-      this.userLogado = true      
-    
-    } else{
+    if (localUser !== null || localManager !== null) {
+      this.userLogado = true
+    } else {
       this.router.navigateByUrl('login', { skipLocationChange: true })
     }
-
   }
 
   public logout() {
     this.storage.setLocalUser(null);
+    this.storage.setManager(null);
     sessionStorage.clear();
     location.reload()
   }
