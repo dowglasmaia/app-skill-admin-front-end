@@ -7,6 +7,7 @@ import { map, catchError, flatMap } from "rxjs/operators"
 
 import { environment } from 'src/environments/environment.prod';
 import { Colaborador } from '../model/colaborador.model';
+import { Skill } from '../../skills/model/skill.model';
 
 
 
@@ -50,12 +51,12 @@ export class ColaboradorService {
 
 
 
-  update(colaborador: Colaborador): Observable<Colaborador> {
-    const url = `${this.apiPath}/${colaborador.id}/skills`;
-    return this.http.put(url, colaborador)
+  update(id: number, skills : Array<Skill>): Observable<Colaborador> {
+    const url = `${this.apiPath}/${id}/skills`;
+    return this.http.put(url, skills)
       .pipe(
         catchError(this.handleError),
-        map(() => colaborador)
+        map(this.jsonDataToColaborador)
       )
   }
 

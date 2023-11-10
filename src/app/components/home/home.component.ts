@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     let localUser = this.storage.getLocalUser();
     console.log(localUser)
 
-    if (localUser !== null) {     
+    if (localUser !== null ) {     
       this.userLogado = true      
     
     } else{

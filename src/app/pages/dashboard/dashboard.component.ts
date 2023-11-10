@@ -2,6 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { ColaboradorService } from '../user/services/colaborador.service';
 import { Colaborador } from '../user/model/colaborador.model';
 
+import toasrt from "toastr";
+toasrt.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": true,
+  "positionClass": "toast-top-center",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "3000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -21,20 +39,18 @@ export class DashboardComponent implements OnInit {
   private findAll() {
     this.colaboradorService.getAll()
       .subscribe(
-        response => this.colaboradores = response,
-        error => alert('Error ao carregar a lista de Skills')
+        response => this.colaboradores = response.sort((a, b) => b.id - a.id),
+        error => toasrt.error('Error ao carregar a lista de Skills!')
       )
   }
 
 
 
-  listar(nameSkill: string): void {
-    /* Pegando os dados o input do HTML*/
-    console.log('key caracter: ', nameSkill);
 
+  listar(nameSkill: string): void {
     this.colaboradorService.getAllByNameSkill(nameSkill)
       .subscribe(
-        response => this.colaboradores = response,
+        response => this.colaboradores = response.sort((a, b) => b.id - a.id),
         error => alert('Error ao carregar a lista de Skills')
       )
   }

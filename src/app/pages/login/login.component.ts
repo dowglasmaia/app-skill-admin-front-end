@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup} from '@angular/forms';
 import { Login } from './model/login.model';
 
-import toasrt from "toastr";
+
 import { StorageService } from './services/storage.service';
 import { Router } from '@angular/router';
 
-// personalizando o toasrt (Mensagens)
+import toasrt from "toastr";
 toasrt.options = {
   "closeButton": false,
   "debug": false,
