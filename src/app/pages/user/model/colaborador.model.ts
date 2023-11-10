@@ -1,4 +1,4 @@
-import { Skill } from "./skill.model";
+import { Skill } from "../../skills/model/skill.model";
 
 export class Colaborador {
     id?: number;

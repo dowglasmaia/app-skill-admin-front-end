@@ -1,4 +1,4 @@
-<nav class="mb-5">
+<nav class="mb-5 border-bottom">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a routerLink="/">Dashboard</a> </li>
     <li class="breadcrumb-item active"> Skills </li>
@@ -22,7 +22,7 @@
 <table class="table table-hover">
   <thead>
     <tr class="bg-dark text-light">
-      <th>Skill</th>      
+      <th>Skill</th>
       <th class="float-right">Ações</th>
     </tr>
   </thead>
@@ -31,8 +31,8 @@
     <tr *ngFor="let skill of skills">
       <td>
         <strong>{{skill.name}}</strong><br>
-        <small>{{skill.description}}</small>      
-      </td> 
+        <small>{{skill.description}}</small>
+      </td>
 
       <td class="float-right">
         <a [routerLink]="[ skill.id, 'edit' ]" class="btn btn-sm btn-outline-info mr-2"> Editar </a>

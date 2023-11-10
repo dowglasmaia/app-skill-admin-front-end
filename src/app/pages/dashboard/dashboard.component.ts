@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ColaboradorService } from '../skills/services/colaborador.service';
-import { Colaborador } from '../skills/model/colaborador.model';
+import { ColaboradorService } from '../user/services/colaborador.service';
+import { Colaborador } from '../user/model/colaborador.model';
 
 
 @Component({
