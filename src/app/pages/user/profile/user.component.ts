@@ -7,6 +7,26 @@ import { Skill } from '../../skills/model/skill.model';
 import { SkillService } from '../../skills/services/skill.service';
 import { StorageService } from '../../login/services/storage.service';
 
+
+import toasrt from "toastr";
+toasrt.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": true,
+  "positionClass": "toast-top-center",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "3000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -66,8 +86,10 @@ export class UserComponent implements OnInit {
     console.log(this.colaborador)
     this.colaboradorService.update(this.colaborador.id, this.colaborador.skills)
       .subscribe(colaborador => {
-        this.colaborador = colaborador
-      })
+        this.colaborador = colaborador;
+        toasrt.success('Skill adicionada com sucesso!')
+      },
+        error => toasrt.error('Ocorreu um error ao tentar adicionar uma nova Skill!'))
   }
 
 

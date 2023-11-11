@@ -1,4 +1,6 @@
-export class Login {
+import { Colaborador } from "../../user/model/colaborador.model";
+
+export class Login extends Colaborador{
     public user?: string;
     public password?: string;
 

@@ -72,7 +72,7 @@ export class DashboardComponent implements OnInit {
 
     if (localUser !== null && localManager === null) {
       this.userLogado = true
-      this.router.navigate(['profile', 1], { skipLocationChange: true })
+      this.router.navigate(['profile', 4], { skipLocationChange: true })
     } else if (localUser === null && localManager !== null) {
       this.managerLogado = true
     }
