@@ -17,16 +17,17 @@ import { Skill } from '../../skills/model/skill.model';
 })
 export class ColaboradorService {
 
+
   private apiPath: string = `${environment.url_api}/colaboradores`;
 
 
   getAllByNameSkill(name: string): Observable<Colaborador[]> {
-    console.log("O NOME É: "+name);
+    console.log("O NOME É: " + name);
     return this.http.get(`${this.apiPath}?skill=${name}`)
-    .pipe(
-      catchError(this.handleError),
-      map(this.jsonDataToColaboradores)
-    )
+      .pipe(
+        catchError(this.handleError),
+        map(this.jsonDataToColaboradores)
+      )
   }
 
 
@@ -49,9 +50,16 @@ export class ColaboradorService {
       )
   }
 
+  getByMatricula(matricula: string): Observable<Colaborador> {
+    return this.http.get(`${this.apiPath}/${matricula}/matricula`)
+      .pipe(
+        catchError(this.handleError),
+        map(this.jsonDataToColaborador)
+      )
+  }
 
 
-  update(id: number, skills : Array<Skill>): Observable<Colaborador> {
+  update(id: number, skills: Array<Skill>): Observable<Colaborador> {
     const url = `${this.apiPath}/${id}/skills`;
     return this.http.put(url, skills)
       .pipe(

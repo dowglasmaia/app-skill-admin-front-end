@@ -3,11 +3,12 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { LoginGuard } from './guard/login-guard.service';
 
+
 const routes: Routes = [
 
   {
     path: '', canActivate: [AuthGuardService],
-    children: [      
+    children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardModule' },
       { path: 'skills', loadChildren: './pages/skills/skills.module#SkillsModule' },

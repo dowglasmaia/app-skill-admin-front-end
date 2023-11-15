@@ -6,7 +6,7 @@ const routes: Routes = [
 
   { path: '', component: UserComponent },
 
-  { path: ':id', component: UserComponent }
+  { path: ':matricula', component: UserComponent }
   
 ];
 

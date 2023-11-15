@@ -9,6 +9,8 @@ import { StorageService } from '../../login/services/storage.service';
 
 
 import toasrt from "toastr";
+import { TimeoutError } from 'rxjs';
+
 toasrt.options = {
   "closeButton": false,
   "debug": false,
@@ -18,9 +20,9 @@ toasrt.options = {
   "preventDuplicates": false,
   "onclick": null,
   "showDuration": "300",
-  "hideDuration": "1000",
+  "hideDuration": "800",
   "timeOut": "3000",
-  "extendedTimeOut": "1000",
+  "extendedTimeOut": "900",
   "showEasing": "swing",
   "hideEasing": "linear",
   "showMethod": "fadeIn",
@@ -38,7 +40,7 @@ export class UserComponent implements OnInit {
     private skillsService: SkillService,
     private route: ActivatedRoute,
     private storage: StorageService,
-    private router: Router
+    private router: Router,
   ) { }
 
   userLogado: boolean = false;
@@ -50,11 +52,12 @@ export class UserComponent implements OnInit {
   selectedSkill: Skill;
 
   ngOnInit() {
-    this.getById();
+    this.getUserLogado();
+
+    this.getByMatricula();
 
     this.getAllSkill();
 
-    this.getUserLogado();
 
   }
 
@@ -69,15 +72,40 @@ export class UserComponent implements OnInit {
     )
   }
 
-  getAllSkill() {
+  private getByMatricula() {
+
+    this.route.paramMap.pipe(
+      switchMap(params => this.colaboradorService.getByMatricula(params.get("matricula")))
+    ).subscribe(colaborador => {
+      this.colaborador = colaborador;
+      this.colaboradorSkills = colaborador.skills;
+    },
+      error => alert('Ocorreu um error no servidor, tente mais tarde!')
+    )
+  }
+
+  private getAllSkill() {
     this.skillsService.getAll()
       .subscribe(skills => this.skills = skills)
   }
 
 
+  private getUserLogado() {
+    let localUser = this.storage.getLocalUser();
+    let localManager = this.storage.getManager();
+
+    if (localUser !== null && localManager === null) {
+      this.userLogado = true
+
+    } else if (localUser === null && localManager !== null) {
+      this.managerLogado = true
+    }
+  }
+
+
   addSkill(newSkill: Skill): void {
     const existeValor = this.colaboradorSkills.some(item => item.name === newSkill.name);
-
+    console.log(newSkill)
     if (!existeValor)
       this.colaboradorSkills.push(newSkill)
   }
@@ -88,24 +116,12 @@ export class UserComponent implements OnInit {
       .subscribe(colaborador => {
         this.colaborador = colaborador;
         toasrt.success('Skill adicionada com sucesso!')
+        setTimeout(() => {
+          location.reload()
+        }, 1300);
       },
         error => toasrt.error('Ocorreu um error ao tentar adicionar uma nova Skill!'))
   }
-
-
-  public getUserLogado() {
-    let localUser = this.storage.getLocalUser();
-    let localManager = this.storage.getManager();
-
-    if (localUser !== null && localManager === null) {
-      this.userLogado = true
-
-    } else if (localUser === null && localManager !== null) {
-      this.managerLogado = true
-    }
-
-  }
-
 
 
 
