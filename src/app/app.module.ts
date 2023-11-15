@@ -9,7 +9,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { InMemoryDataBase } from './in-memory-database'
 import { HomeComponent } from './components/home/home.component';
 
-import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AuthGuardService } from './guard/auth-guard.service';
+import { LoginGuard } from './guard/login-guard.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     HttpClientModule,
     //HttpClientInMemoryWebApiModule.forRoot(InMemoryDataBase)
   ],
-  providers: [],
+  providers: [
+    AuthGuardService,
+    LoginGuard
+  ],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

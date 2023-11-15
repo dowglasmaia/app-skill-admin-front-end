@@ -38,26 +38,14 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private frmBuilder: FormBuilder,
-    private storage: StorageService,
-    private router: Router,
+    private storage: StorageService
+  
   ) { }
 
   ngOnInit() {
-    this.getUserLogado();
-
     this.userLogin = new Login();
-
     this.buildSkillForm();
 
-  }
-
-  public getUserLogado() {
-    let localUser = this.storage.getLocalUser();
-    let localManager = this.storage.getManager();
-
-    if (localUser !== null || localManager !== null) {
-      this.router.navigateByUrl('/', { skipLocationChange: true })
-    }
   }
 
   private buildSkillForm() {
@@ -72,16 +60,12 @@ export class LoginComponent implements OnInit {
 
     if (login.password === "123" && login.user === "user") {
       this.storage.setLocalUser(login);
-      location.reload()
-      setTimeout(() => {
-        this.router.navigateByUrl('/', { skipLocationChange: true })
-      }, 1000);
+      location.reload();
+
     } else if (login.password === "123" && login.user === "manager") {
       this.storage.setManager(login);
-      location.reload()
-      setTimeout(() => {
-        this.router.navigateByUrl('/', { skipLocationChange: true })
-      }, 1000);
+      location.reload();
+
     } else {
       toasrt.error('User ou Senha inválido(a)!');
     }

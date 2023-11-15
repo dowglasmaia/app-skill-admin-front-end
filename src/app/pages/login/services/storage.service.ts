@@ -9,14 +9,15 @@ export class StorageService {
 
   constructor() { }
 
+  public userLogado: boolean = false;
 
   public getLocalUser(): Login {
     let user = sessionStorage.getItem(STORAGE_KEYS.localUser);
     if (user == null)
-
       return null;
     else
-      return JSON.parse(user);
+      this.userLogado = true;
+    return JSON.parse(user);
 
   }
 
@@ -25,18 +26,17 @@ export class StorageService {
       sessionStorage.clear();
     } else {
       sessionStorage.setItem(STORAGE_KEYS.localUser, JSON.stringify(obj));
-
-      console.log(obj)
+      this.userLogado = true;
     }
   }
 
   public getManager(): Login {
     let user = sessionStorage.getItem(STORAGE_KEYS.localManager);
     if (user == null)
-
       return null;
     else
-      return JSON.parse(user);
+      this.userLogado = true;
+    return JSON.parse(user);
 
   }
 
@@ -45,9 +45,11 @@ export class StorageService {
       sessionStorage.clear();
     } else {
       sessionStorage.setItem(STORAGE_KEYS.localManager, JSON.stringify(obj));
-
+      this.userLogado = true;
       console.log(obj)
     }
   }
+
+
 
 }

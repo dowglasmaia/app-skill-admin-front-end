@@ -24,16 +24,12 @@ export class HomeComponent implements OnInit {
 
 
   public getUserLogado() {
-    let localUser = this.storage.getLocalUser();
-    let localManager = this.storage.getManager();
-    console.log(localUser)
-    console.log(localManager)
+    this.storage.getLocalUser();
+    this.storage.getManager();
+    this.userLogado = this.storage.userLogado;
 
-    if (localUser !== null || localManager !== null) {
-      this.userLogado = true
-    } else {
-      this.router.navigateByUrl('login', { skipLocationChange: true })
-    }
+    console.log("ESTAR LOGADO LOCAL", this.userLogado)
+    console.log("ESTAR LOGADO GERAL ", this.storage.userLogado)
   }
 
   public logout() {
@@ -41,6 +37,7 @@ export class HomeComponent implements OnInit {
     this.storage.setManager(null);
     sessionStorage.clear();
     location.reload()
+   
   }
 
 }
